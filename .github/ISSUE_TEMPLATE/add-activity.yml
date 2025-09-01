@@ -1,0 +1,112 @@
+name: 🎯 Add New Activity
+description: Request to add a new extracurricular activity to the system
+title: "[NEW ACTIVITY] Add new activity: "
+labels: ["enhancement", "activity", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🎯 Add New Activity Request
+        
+        Use this template to request adding a new extracurricular activity to the Mergington High School system.
+        Please fill out all sections to provide clear requirements for implementation.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: What is the name of the new activity?
+      placeholder: e.g., "Photography Club", "Cooking Class", "Drama Club"
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity-description
+    attributes:
+      label: Activity Description
+      description: Provide a clear, engaging description of the activity (will be shown to students)
+      placeholder: e.g., "Learn photography techniques, develop film, and participate in photo contests"
+    validations:
+      required: true
+
+  - type: input
+    id: schedule-days
+    attributes:
+      label: Schedule - Days of the Week
+      description: Which days will this activity take place?
+      placeholder: e.g., "Monday and Wednesday" or "Saturdays"
+    validations:
+      required: true
+
+  - type: input
+    id: schedule-time
+    attributes:
+      label: Schedule - Time
+      description: What time will this activity run?
+      placeholder: e.g., "3:15 PM - 4:45 PM" or "10:00 AM - 2:00 PM"
+    validations:
+      required: true
+
+  - type: input
+    id: max-participants
+    attributes:
+      label: Maximum Participants
+      description: What is the maximum number of students that can participate?
+      placeholder: e.g., "15", "20", "12"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Activity Category
+      description: Which category best describes this activity?
+      options:
+        - Academic
+        - Arts
+        - Sports
+        - Technology
+        - Community
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What should the final result look like? Be specific about what success means.
+      value: |
+        - [ ] New activity appears in the activities list
+        - [ ] Activity shows correct name, description, and schedule
+        - [ ] Students can sign up for the activity (if not full)
+        - [ ] Activity appears in appropriate category filter
+        - [ ] Maximum participant limit is enforced
+        - [ ] Activity appears in correct day/time filters
+      placeholder: Add any additional criteria specific to this activity...
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-requirements
+    attributes:
+      label: Additional Requirements or Special Considerations
+      description: Any special requirements, equipment needs, or other considerations?
+      placeholder: e.g., "Requires art supplies", "Need access to computer lab", "Outdoor activity - weather dependent"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡 Implementation Hints
+        
+        **For the developer implementing this:**
+        - Add the new activity to the `initial_activities` dictionary in `src/backend/database.py`
+        - Follow the existing format with schedule_details including days array and start_time/end_time in 24-hour format
+        - Ensure the activity appears in the appropriate filters on the frontend
+        - Test that students can register and unregister properly
+        
+        **Technical Context:**
+        - Activities are stored in MongoDB with a specific schema
+        - Frontend filtering relies on schedule_details structure
+        - Maximum participants should be enforced in the signup endpoint

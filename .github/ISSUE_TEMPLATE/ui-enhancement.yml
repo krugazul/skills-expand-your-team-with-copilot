@@ -1,0 +1,148 @@
+name: 🎨 UI/UX Enhancement
+description: Request improvements to the user interface or user experience
+title: "[UI/UX] Improve: "
+labels: ["enhancement", "ui/ux", "teacher-request", "frontend"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🎨 UI/UX Enhancement Request
+        
+        Use this template to request improvements to the user interface or user experience of the activity management system.
+        Focus on making the system easier and more pleasant to use.
+
+  - type: dropdown
+    id: enhancement-area
+    attributes:
+      label: Which area needs improvement?
+      description: Select the main area you want to enhance
+      options:
+        - Activities list display
+        - Search and filtering
+        - Student registration process
+        - Teacher login and authentication
+        - Mobile responsiveness
+        - Color scheme and styling
+        - Navigation and layout
+        - Accessibility
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-problem
+    attributes:
+      label: Current Problem or Pain Point
+      description: Describe what is currently difficult, confusing, or frustrating about the user experience
+      placeholder: |
+        e.g., "The activities list is hard to scan quickly - all text looks the same"
+        e.g., "Students have trouble finding activities that meet on specific days"
+        e.g., "The registration modal is too small and hard to read"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: Describe your vision for how this should work or look
+      placeholder: |
+        e.g., "Make activity cards more visual with icons and better typography"
+        e.g., "Add a calendar view to see activities by day of the week"
+        e.g., "Make the registration form larger and easier to read"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: target-users
+    attributes:
+      label: Who will benefit most from this change?
+      description: Select the primary users who will benefit
+      options:
+        - Students browsing activities
+        - Teachers managing registrations
+        - Both students and teachers
+        - Mobile users
+        - Users with accessibility needs
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this enhancement?
+      description: Help prioritize this request
+      options:
+        - High - Significantly impacts daily use
+        - Medium - Would be helpful but not urgent
+        - Low - Nice to have improvement
+    validations:
+      required: true
+
+  - type: textarea
+    id: success-metrics
+    attributes:
+      label: How will you measure success?
+      description: How will you know this enhancement worked well?
+      placeholder: |
+        e.g., "Students find activities faster"
+        e.g., "Fewer questions about how to use the system"
+        e.g., "Teachers can complete tasks more quickly"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What specific changes should be visible to users?
+      value: |
+        - [ ] Enhancement is visible and functional on the website
+        - [ ] Change works on both desktop and mobile devices
+        - [ ] Existing functionality is not broken
+        - [ ] Enhancement matches the existing design style
+        - [ ] No accessibility issues are introduced
+      placeholder: Add specific criteria for your enhancement...
+    validations:
+      required: true
+
+  - type: textarea
+    id: design-inspiration
+    attributes:
+      label: Design Inspiration or Examples
+      description: Any examples, mockups, or inspiration for the visual design?
+      placeholder: |
+        e.g., "Like the card layout on [website name]"
+        e.g., "Similar to the calendar view in Google Calendar"
+        e.g., "Clean and simple like Apple's design"
+
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Design Constraints
+      description: Any limitations or requirements to keep in mind?
+      options:
+        - label: Must work on mobile devices
+        - label: Should maintain current color scheme
+        - label: Must be accessible (keyboard navigation, screen readers)
+        - label: Should load quickly (no heavy graphics)
+        - label: Must work for teachers who aren't tech-savvy
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡 Implementation Hints
+        
+        **For the developer implementing this:**
+        - Frontend files are in `src/static/` - `index.html`, `app.js`, and `styles.css`
+        - Current design uses CSS custom properties (variables) for consistent theming
+        - Existing responsive design breakpoints should be maintained
+        - Consider accessibility standards (ARIA labels, keyboard navigation)
+        - Test on different screen sizes and devices
+        
+        **Technical Context:**
+        - The site uses vanilla HTML/CSS/JavaScript (no frameworks)
+        - CSS follows a component-based approach with clear class naming
+        - JavaScript handles dynamic content loading and user interactions
+        - Keep performance in mind - avoid heavy libraries unless absolutely necessary
