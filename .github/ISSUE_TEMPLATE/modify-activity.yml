@@ -1,0 +1,124 @@
+name: ✏️ Modify Existing Activity
+description: Request changes to an existing extracurricular activity
+title: "[MODIFY ACTIVITY] Update activity: "
+labels: ["enhancement", "activity", "teacher-request", "modification"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ✏️ Modify Existing Activity Request
+        
+        Use this template to request changes to an existing extracurricular activity in the system.
+        Please be specific about what changes are needed and why.
+
+  - type: dropdown
+    id: existing-activity
+    attributes:
+      label: Which activity needs to be modified?
+      description: Select the activity you want to change
+      options:
+        - Chess Club
+        - Programming Class
+        - Math Olympiad
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Science Olympiad
+        - Sunday Chess Tournament
+        - Other (please specify in description)
+    validations:
+      required: true
+
+  - type: input
+    id: other-activity
+    attributes:
+      label: Other Activity Name (if not listed above)
+      description: If you selected "Other", please specify the activity name
+      placeholder: e.g., "Art Club", "Music Band"
+
+  - type: checkboxes
+    id: change-type
+    attributes:
+      label: What needs to be changed?
+      description: Select all that apply
+      options:
+        - label: Activity name
+        - label: Description
+        - label: Schedule (days and/or times)
+        - label: Maximum participants
+        - label: Current participants (add/remove students)
+        - label: Other
+
+  - type: textarea
+    id: current-details
+    attributes:
+      label: Current Activity Details
+      description: Describe the current state of the activity (name, schedule, description, etc.)
+      placeholder: |
+        Current name: Chess Club
+        Current schedule: Mondays and Fridays, 3:15 PM - 4:45 PM
+        Current description: Learn strategies and compete in chess tournaments
+        Current max participants: 12
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired-changes
+    attributes:
+      label: Desired Changes
+      description: Describe exactly what you want to change and what the new values should be
+      placeholder: |
+        Change schedule to: Tuesdays and Thursdays, 3:30 PM - 5:00 PM
+        Update description to: Advanced chess strategies and tournament preparation
+        Increase max participants to: 16
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Changes
+      description: Why are these changes needed?
+      placeholder: e.g., "Schedule conflicts with other activities", "More students interested than expected", "Need more time for advanced training"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will you know the changes were implemented correctly?
+      value: |
+        - [ ] Activity shows the updated information in the activities list
+        - [ ] Schedule changes are reflected in day/time filters
+        - [ ] Student signups work correctly with new limits
+        - [ ] Existing participants are preserved (unless specifically removing them)
+        - [ ] Changes appear immediately on the website
+      placeholder: Add any additional criteria specific to these changes...
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact-considerations
+    attributes:
+      label: Impact on Current Participants
+      description: How should current participants be handled? Any notifications needed?
+      placeholder: e.g., "Keep all current participants", "Remove specific students", "Notify students of schedule change"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡 Implementation Hints
+        
+        **For the developer implementing this:**
+        - Modify the activity in the `initial_activities` dictionary in `src/backend/database.py`
+        - If changing schedule, update both the human-readable schedule and schedule_details object
+        - Ensure time format is consistent (24-hour format for start_time/end_time)
+        - If increasing max_participants, no additional validation needed
+        - If decreasing max_participants, check that current participants don't exceed new limit
+        - Test that filters still work correctly after changes
+        
+        **Technical Context:**
+        - Schedule changes affect frontend filtering logic
+        - Participant changes may require manual intervention in the database
+        - Activity name changes require updating the activity key in the database

@@ -1,0 +1,181 @@
+name: 🐛 Bug Report
+description: Report a problem or error in the system
+title: "[BUG] "
+labels: ["bug", "teacher-request", "needs-investigation"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐛 Bug Report
+        
+        Use this template to report problems, errors, or unexpected behavior in the activity management system.
+        Please provide as much detail as possible to help us understand and fix the issue.
+
+  - type: textarea
+    id: bug-summary
+    attributes:
+      label: Bug Summary
+      description: Briefly describe what is wrong
+      placeholder: e.g., "Students can't sign up for Chess Club" or "Activity schedule shows wrong time"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: What exact steps lead to the problem?
+      value: |
+        1. Go to...
+        2. Click on...
+        3. Enter...
+        4. See error
+      placeholder: Replace the example steps with the actual steps that cause the problem
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+      placeholder: e.g., "Student should be added to the activity participant list" or "Schedule should display correctly"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior
+      description: What actually happens? Include any error messages you see.
+      placeholder: |
+        e.g., "Error message appears: 'Failed to sign up'"
+        e.g., "Page becomes unresponsive"
+        e.g., "Student name doesn't appear in the list"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does this happen?
+      description: Is this consistent or intermittent?
+      options:
+        - Always - happens every time
+        - Usually - happens most of the time
+        - Sometimes - happens occasionally
+        - Rarely - happened once or twice
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-users
+    attributes:
+      label: Who is affected by this bug?
+      description: Which users experience this problem?
+      options:
+        - All students
+        - All teachers
+        - Specific students (please specify below)
+        - Specific teachers (please specify below)
+        - Everyone
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: specific-users
+    attributes:
+      label: Specific Affected Users
+      description: If only certain users are affected, please provide details
+      placeholder: e.g., "Only students with emails ending in @mergington.edu" or "Only Ms. Rodriguez's account"
+
+  - type: dropdown
+    id: device-type
+    attributes:
+      label: What device/browser are you using?
+      description: This helps us understand if it's device-specific
+      options:
+        - Desktop computer with Chrome
+        - Desktop computer with Firefox
+        - Desktop computer with Safari
+        - Desktop computer with Edge
+        - Mobile phone
+        - Tablet
+        - Not sure
+        - Other
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround
+      description: Have you found any way to work around this problem?
+      placeholder: e.g., "If I refresh the page, it works" or "Using a different browser helps"
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this fix?
+      description: Help us prioritize this bug
+      options:
+        - Critical - System is unusable
+        - High - Major feature broken, affecting daily work
+        - Medium - Minor feature broken, has workaround
+        - Low - Cosmetic issue, doesn't affect functionality
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact on School Operations
+      description: How does this bug affect the school's daily activities?
+      placeholder: |
+        e.g., "Students can't register for activities for next week"
+        e.g., "Teachers can't see who's signed up, affecting planning"
+        e.g., "Minor display issue, doesn't affect functionality"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria for Fix
+      description: How will you know this bug is fixed?
+      value: |
+        - [ ] Steps to reproduce no longer cause the problem
+        - [ ] Expected behavior occurs consistently
+        - [ ] No new bugs are introduced by the fix
+        - [ ] Fix works on different devices/browsers
+      placeholder: Add any additional criteria specific to this bug...
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints-limitations
+    attributes:
+      label: Constraints and Limitations
+      description: Any limitations or constraints that should be considered when fixing this bug?
+      placeholder: |
+        e.g., "Must not affect other activities' functionality"
+        e.g., "Fix should maintain data integrity"
+        e.g., "Solution should work with current MongoDB setup"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡 Investigation Hints
+        
+        **For the developer investigating this:**
+        - Check browser console for JavaScript errors (F12 → Console)
+        - Look at network requests to see if API calls are failing (F12 → Network)
+        - Verify database state if the issue involves data inconsistency
+        - Test on different browsers and devices to isolate the problem
+        - Check server logs for backend errors
+        
+        **Common areas to investigate:**
+        - `src/static/app.js` for frontend logic errors
+        - `src/backend/routers/` for API endpoint issues
+        - `src/backend/database.py` for data-related problems
+        - `src/static/styles.css` for display/layout issues
