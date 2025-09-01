@@ -152,6 +152,16 @@ body:
     validations:
       required: true
 
+  - type: textarea
+    id: constraints-limitations
+    attributes:
+      label: Constraints and Limitations
+      description: Any limitations or constraints that should be considered when fixing this bug?
+      placeholder: |
+        e.g., "Must not affect other activities' functionality"
+        e.g., "Fix should maintain data integrity"
+        e.g., "Solution should work with current MongoDB setup"
+
   - type: markdown
     attributes:
       value: |
